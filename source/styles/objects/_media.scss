@@ -1,0 +1,37 @@
+@mixin media($horz: 1.5rem) {
+	@include child-margin-clear;
+
+	align-items: flex-start;
+	display: flex;
+	margin-bottom: $vert-space-md;
+
+	&__figure {
+		margin-right: $horz;
+	}
+	&__body {
+		flex: 1;
+		@include child-margin-clear;
+	}
+}
+
+
+.media {
+	@include media;
+
+	/* #MODIFIERS
+	------------------------------------*/
+	
+	&--lg-space {
+		margin-bottom: 4.5rem;
+		.media__figure { margin-right: 4.5rem; }
+	}
+
+	&--reverse {
+		> .media__figure {
+			order: 1;
+			margin-right: 0;
+			margin-left: 1em;
+		}
+	}
+	&--center { align-items: center; }
+}

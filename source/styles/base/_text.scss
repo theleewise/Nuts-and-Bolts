@@ -1,0 +1,13 @@
+p {}
+
+blockquote {}
+
+cite {}
+
+.text-meta {
+	font-size: $ts-body * 0.85;
+}
+
+.text-bold, .bold, .strong, strong {
+	font-weight: 700;
+}

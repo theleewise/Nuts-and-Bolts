@@ -1,0 +1,27 @@
+.form {
+	&-item {
+		margin-bottom: $vert-space;
+		position: relative;
+		&.has-error {
+			color: $error-color;
+		}
+	}
+	&-field {
+		width: 100%;
+		.has-error & {
+			color: $error-color;
+		}
+	}
+	&-label {
+		.has-error & {
+			color: $error-color;
+		}
+	}
+
+	&-inline {
+		display: flex;
+		> .form-item {
+			flex: auto;
+		}
+	}
+}

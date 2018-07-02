@@ -1,0 +1,36 @@
+@mixin child-margin-clear($side) {
+	@if $side == "top"
+		> *:first-child { margin-top: 0; }
+	@else if $side == "bottom"
+		> *:last-child { margin-bottom: 0; }
+	@else
+		> *:first-child { margin-top: 0; }
+		> *:last-child { margin-bottom: 0; }
+}
+
+.child-margin-clear {
+	@include child-margin-clear;
+	&--top { @include child-margin-clear("top") }
+	&--bottom { @include child-margin-clear("bottom") }
+}
+
+
+.no-margin { margin: 0; }
+.no-padding { padding: 0; }
+
+
+.full-width {
+	left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	position: relative;
+	right: 50%;
+	width: 100vw;
+}
+
+
+.no-scroll {
+	overflow: hidden;
+	&-v { overflow-y: hidden; }
+	&-h { overflow-x: hidden; }
+}

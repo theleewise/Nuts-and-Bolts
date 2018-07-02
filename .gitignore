@@ -1,0 +1,54 @@
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Visual Studio Build Files 
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.Cache
+*.ilk
+*.log
+[Pp]ackages
+[Bb]in
+[Dd]ebug*/
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+*.suo
+
+# Compiled Styles
+*.min.css
+
+# Compiled Scripts
+*.min.js
+
+# Pattern Library Assets
+pattern-library/assets/
+
+# Map Files
+*.map
+
+# Node dependency directory
+node_modules/
+
+# Bower dependency directory
+bower_components/

@@ -1,0 +1,233 @@
+{
+    "project_logo": null,
+    "project_favicon": "favicon.png",
+    "project_name": null,
+    "project_url": null,
+    "copyright_start_year": null,
+    "client_name": null,
+    "client_url": null,
+    "creators": [
+        {
+            "name": null,
+            "url": null
+        }
+    ],
+    "theme": {
+        "border_color": "#E0E6ED",
+        "highlight_color": "#F9FAFC",
+        "brand_color": "#00585C",
+        "background_color": "#FFFFFF",
+        "code_highlight_theme": "github",
+        "override_code_highlight_bg": "#F9FAFC",
+        "sample_dark_background": "#333333",
+        "show_project_name": true,
+        "show_version": true,
+        "max_width": null,
+        "titles": {
+            "library_title": "Pattern Library",
+            "pages_title": "Overview",
+            "components_title": "Components"
+        }
+    },
+    "assets": {
+        "css": [
+            "./assets/css/default.css",
+            "./assets/css/style.css"
+        ],
+        "js": [
+            "./assets/js/default.js",
+            "./assets/js/script.js"
+        ]
+    },
+    "font_libraries": {
+        "typekit_code": null,
+        "typography_web_fonts": null,
+        "google_web_fonts": null
+    },
+    "content": {
+        "show_first_page_on_load": true,
+        "title": "Overview",
+        "pages": [
+            {
+                "name": "introduction",
+                "title": "Introduction",
+                "file": "./pages/intro.md"
+            }
+        ]
+    },
+    "groups": [
+        {
+            "name": "settings",
+            "title": "Settings",
+            "components": [
+                {
+                    "group": "settings",
+                    "name": "colors",
+                    "title": "Colors",
+                    "type": "colors",
+                    "colors": [
+                        "#1B789F|$blue",
+                        "#135875|$blue-alt",
+                        "#9d539a|$pink",
+                        "#99ccbe|$mint",
+                        "#000|$black"
+                    ]
+                },
+                {
+                    "group": "settings",
+                    "name": "icons",
+                    "title": "Icons",
+                    "type": "icons",
+                    "icons": [
+                        "gw-gear-new",
+                        "gw-gear",
+                        "facebook",
+                        "home",
+                        "instagram",
+                        "twitter",
+                        "youtube"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "base",
+            "title": "Base",
+            "components": [
+                {
+                    "name": "headings",
+                    "title": "Headings",
+                    "width": "half",
+                    "group": "base"
+                },
+                {
+                    "group": "base",
+                    "name": "headings-on-dark",
+                    "title": "Headings On Dark",
+                    "width": "half",
+                    "options": {
+                        "sample_dark_background": true
+                    }
+                },
+                {
+                    "group": "base",
+                    "name": "text",
+                    "title": "Text"
+                },
+                {
+                    "name": "tables",
+                    "title": "Tables",
+                    "options": {},
+                    "group": "base"
+                },
+                {
+                    "group": "base",
+                    "name": "forms",
+                    "title": "Forms"
+                }
+            ]
+        },
+        {
+            "name": "icons",
+            "title": "Icons",
+            "components": [
+                {
+                    "group": "icons",
+                    "name": "facebook",
+                    "title": "Facebook",
+                    "width": "quarter"
+                },
+                {
+                    "group": "icons",
+                    "name": "instagram",
+                    "title": "Instagram",
+                    "width": "quarter"
+                },
+                {
+                    "group": "icons",
+                    "name": "twitter",
+                    "title": "Twitter",
+                    "width": "quarter"
+                },
+                {
+                    "group": "icons",
+                    "name": "youtube",
+                    "title": "YouTube",
+                    "width": "quarter"
+                },
+                {
+                    "group": "icons",
+                    "name": "home",
+                    "title": "Home",
+                    "width": "quarter"
+                },
+                {
+                    "group": "icons",
+                    "name": "gw-gear",
+                    "title": "Gravity Works gear",
+                    "width": "quarter"
+                },
+                {
+                    "name": "gw-gear-new",
+                    "title": "GW gear (2018)",
+                    "width": "quarter",
+                    "group": "icons"
+                }
+            ]
+        },
+        {
+            "name": "objects",
+            "title": "Objects",
+            "components": [
+                {
+                    "group": "objects",
+                    "name": "buttons",
+                    "title": "Buttons"
+                },
+                {
+                    "group": "objects",
+                    "name": "soc-links",
+                    "title": "Social Links"
+                }
+            ]
+        },
+        {
+            "name": "grid",
+            "title": "Grid",
+            "components": [
+                {
+                    "name": "flex",
+                    "title": "Flex Grid",
+                    "group": "grid"
+                },
+                {
+                    "group": "grid",
+                    "name": "simple",
+                    "title": "Simple Grid"
+                }
+            ]
+        },
+        {
+            "name": "page",
+            "title": "Page",
+            "components": [
+                {
+                    "name": "regions",
+                    "title": "Regions",
+                    "group": "page"
+                },
+                {
+                    "group": "page",
+                    "name": "header",
+                    "title": "Header"
+                },
+                {
+                    "group": "page",
+                    "name": "footer",
+                    "title": "Footer"
+                }
+            ]
+        }
+    ],
+    "version": "1.9.5"
+}

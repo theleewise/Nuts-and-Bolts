@@ -1,0 +1,28 @@
+/* #CONTAINERS
+------------------------------------*/
+@mixin container($mw: $max-width) {
+	margin-left: auto;
+	margin-left: auto;
+	max-width: $mw;
+	width: 100%;
+}
+
+.container {
+	@include container;
+}
+
+
+/* #GUTTERS
+------------------------------------*/
+.gutter {
+	padding-left: $gutter-sm;
+	padding-right: $gutter-sm;
+	@include mq($break-sm) {
+		padding-left: $gutter;
+		padding-right: $gutter;
+	}
+	&-sm {
+		padding-left: $gutter-sm;
+		padding-right: $gutter-sm;
+	}
+}

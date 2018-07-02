@@ -1,0 +1,22 @@
+.alert {
+	background-color: $info-color;
+    line-height: 1em;
+margin-bottom: $vert-space;
+    padding: ($vert-space / 2) $vert-space;
+    
+	&--success { background-color: $success-color; }
+	&--warning { background-color: $warning-color; }
+	&--error { background-color: $error-color; }
+
+	a, :link, :visited {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	pre {
+		overflow-x: auto;
+		height: 2em;
+		line-height: 1em;
+		white-space: nowrap;
+	}
+}

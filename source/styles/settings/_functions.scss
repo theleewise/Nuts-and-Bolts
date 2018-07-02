@@ -1,0 +1,16 @@
+@function getColor($label){
+	@return map-get($brand-colors, $label);
+}
+
+@function getSpace($label: default){
+	@return map-get($vert-spaces, $label);
+}
+
+@function getBreak($label, $max: null){
+	$break-object: map-get($breakpoints-map, $label);
+	@if $max != null {
+		@return map-get($break-object, max-width);
+	} @else {
+		@return map-get($break-object, min-width);
+	}
+}

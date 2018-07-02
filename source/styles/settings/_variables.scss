@@ -1,0 +1,71 @@
+/* #COLORS
+------------------------------------*/
+$text-color:		#000;
+$info-color:		#000;
+$success-color:		#000;
+$warning-color:		#000;
+$error-color:		#000;
+
+
+
+/* #TEXT
+------------------------------------*/
+$font-primary:		'Open Sans', sans-serif;
+$font-secondary:	'Open Sans', sans-serif;
+
+$ts-body:			1.6rem;
+$text-lh:			1.6;
+$text-lh-sm:		1.4;
+
+$ts-h1:				3.1rem;
+$ts-h2:				2.5rem;
+$ts-h3:				2.3rem;
+$ts-h4:				2.1rem;
+$ts-h5:				1.9rem;
+$ts-h6:				1.7rem;
+
+
+/* #SPACING
+------------------------------------*/
+$gutter:			3rem;
+$gutter-sm:			1.5rem;
+
+$vert-space:		3rem;
+$vert-space-sm:		2rem;
+
+
+/* #BREAKPOINTS
+------------------------------------*/
+$max-width:			1300px;
+
+$breakpoints-map: (
+	default: (),
+	xxs: (
+		min-width:	null,
+		max-width:	320px
+	),
+	xs: (
+		min-width:	321px,
+		max-width:	480px
+	),
+	sm: (
+		min-width:	481px,
+		max-width:	640px
+	),
+	md: (
+		min-width:	641px,
+		max-width:	768px
+	),
+	lg: (
+		min-width:	769px,
+		max-width:	1024px
+	),
+	xl: (
+		min-width:	1025px,
+		max-width:	1200px
+	),
+	xxl: (
+		min-width:	1201px,
+		max-width:	null
+	)
+);
