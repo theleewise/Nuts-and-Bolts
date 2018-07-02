@@ -1,0 +1,22 @@
+.meta {
+	font-size: $ts-body * 0.85;
+	text-transform: uppercase;
+	&__label {}
+
+	&--inline {
+		display: flex;
+		flex-wrap: wrap;
+		> * {
+			display: block;
+			flex: 0 0 auto;
+			&:not(:first-of-type){
+				margin-left: 1.5rem;
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+	}
+}

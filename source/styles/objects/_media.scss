@@ -1,9 +1,9 @@
-@mixin media($horz: 1.5rem) {
+@mixin media($horz: $gutter-sm, $vert: $vert-space) {
 	@include child-margin-clear;
 
 	align-items: flex-start;
 	display: flex;
-	margin-bottom: $vert-space-md;
+	margin-bottom: $vert-space;
 
 	&__figure {
 		margin-right: $horz;
@@ -22,16 +22,17 @@
 	------------------------------------*/
 	
 	&--lg-space {
-		margin-bottom: 4.5rem;
-		.media__figure { margin-right: 4.5rem; }
+		margin-bottom: $vert-space * 1.5;
+		.media__figure { margin-right: $gutter * 1.5; }
 	}
 
 	&--reverse {
 		> .media__figure {
 			order: 1;
 			margin-right: 0;
-			margin-left: 1em;
+			margin-left: $gutter-sm;
 		}
+		&.media--lg-space > .media__figure { margin-left: $gutter * 1.5; }
 	}
 	&--center { align-items: center; }
 }

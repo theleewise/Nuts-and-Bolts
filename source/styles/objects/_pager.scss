@@ -1,0 +1,37 @@
+.pager {
+    text-transform: uppercase;
+    line-height: 2em;
+    text-align: center;
+  a {
+    color: inherit;
+    display: block;
+    height: 2em;
+    width: 2em;
+  }
+  &__items {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    border: solid 1px;
+    display: block;
+    list-style: none;
+    margin: 0 2px;
+
+    &.is-active {
+      color: #f00;
+      a {
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+  }
+//   &__item--first {}
+//   &__item--previous {}
+//   &__item--ellipsis {}
+//   &__item--next {}
+//   &__item--last {}
+  
+}
