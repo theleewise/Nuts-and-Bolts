@@ -17,7 +17,7 @@
 .gutter {
 	padding-left: $gutter-sm;
 	padding-right: $gutter-sm;
-	@include mq($break-sm) {
+	@include mq(sm) {
 		padding-left: $gutter;
 		padding-right: $gutter;
 	}

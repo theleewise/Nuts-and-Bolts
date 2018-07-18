@@ -1,5 +1,8 @@
 @function getColor($label){
-	@return map-get($brand-colors, $label);
+	@return map-get( map-get($brand-colors, $label), color);
+}
+@function getColorText($label){
+	@return map-get( map-get($brand-colors, $label), text);
 }
 
 @function getSpace($label: default){

@@ -5,6 +5,12 @@ $info-color:		#000;
 $success-color:		#000;
 $warning-color:		#000;
 $error-color:		#000;
+$brand-colors: (
+	red: (
+		color:		#f00,
+		text:		#fff
+	)
+);
 
 
 
@@ -14,8 +20,8 @@ $font-primary:		'Open Sans', sans-serif;
 $font-secondary:	'Open Sans', sans-serif;
 
 $ts-body:			1.6rem;
-$text-lh:			1.6;
-$text-lh-sm:		1.4;
+$text-lh:			1.6em;
+$text-lh-sm:		1.4em;
 
 $ts-h1:				3.1rem;
 $ts-h2:				2.5rem;

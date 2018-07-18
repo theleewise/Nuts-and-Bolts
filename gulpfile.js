@@ -16,7 +16,8 @@ var gulp = require('gulp'),
 	del = require('del'),
 	runSequence = require('run-sequence'),
 	browserSync = require('browser-sync').create(),
-	reload = browserSync.reload;
+	reload = browserSync.reload,
+	rename = require("gulp-rename");
 
 
 
@@ -28,20 +29,20 @@ var gulp = require('gulp'),
 
 var paths = {
 	source: {
-		styles: './source/css/**/*.scss',
+		styles: './source/styles/**/*.scss',
 		images: './source/images/*',
 		icons: './source/svg-icons/*.svg',
-		scripts: './source/js/*.js',
+		scripts: './source/scripts/*.js'
 	},
 	dist: {
-		styles: './public/css',
+		styles: './public/styles',
 		images: './public/images',
 		icons: './public/images',
-		scripts: './public/js',
+		scripts: './public/scripts'
 	},
 	patternLibrary: {
-		patterns: ['pattern-library/**/*.html', 'pattern-library/**/*.md', 'pattern-library/data.json',],
-		sctyles: './pattern-library/assets/css',
+		patterns: ['pattern-library/**/*.html', 'pattern-library/**/*.md', 'pattern-library/data.json'],
+		styles: './pattern-library/assets/css',
 		images: './pattern-library/assets/images',
 		scripts: './pattern-library/assets/js'
 	}
@@ -135,8 +136,8 @@ gulp.task('scripts', function() {
 	.pipe(uglify().on('error', onError)) // Minify
     .pipe(rename({ suffix: ".min" })) // Rename with '.min'
 	.pipe(sourcemaps.write('/')) // Finish source maps
-	.pipe(gulp.dest(paths.patternLibrary.scripts)) // Add copy to the pattern library
 	.pipe(gulp.dest(paths.dist.scripts)) // Add copy to public directory
+	.pipe(gulp.dest(paths.patternLibrary.scripts)) // Add copy to the pattern library
 	.pipe(reload({ stream: true }));
 });
 

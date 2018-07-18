@@ -1,6 +1,8 @@
 p {}
 
-blockquote {}
+.blockquote {
+	&__footer {}
+}
 
 cite {}
 

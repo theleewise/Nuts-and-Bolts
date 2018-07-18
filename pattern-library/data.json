@@ -32,11 +32,11 @@
     "assets": {
         "css": [
             "./assets/css/default.css",
-            "./assets/css/style.css"
+            "./assets/css/styles.min.css"
         ],
         "js": [
             "./assets/js/default.js",
-            "./assets/js/script.js"
+            "./assets/js/scripts.min.js"
         ]
     },
     "font_libraries": {

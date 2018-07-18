@@ -2,7 +2,7 @@ img, svg { max-width: 100%; }
 img { height: auto; }
 
 .image-bg {
-	@include image-bg;
+	@include image-cover;
 }
 
 .thumb {

@@ -1,6 +1,14 @@
 /* #MEDIAQUERIES
 ------------------------------------*/
 @mixin mq($break, $type: min) {
+	content: '#{type-of($break)}';
+	@if (type-of($break) == 'string'){
+		@if $type == max {
+			$break: getBreak($break, max);
+		} @else {
+			$break: getBreak($break);
+		}
+	}
 	@if $type == max {
 		@media (max-width: ($break - 1px)) { @content; }
 	} @else {
@@ -70,7 +78,7 @@
 
 /* #IMAGES
 ------------------------------------*/
-@mixin image-bg {
+@mixin image-cover {
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -83,7 +91,8 @@
 		display: block;
 	}
 	@include flex-center;
-	background: center center / cover no-repeat #eee;
+	@include image-cover;
+	background-color:  #eee;
 }
 
 

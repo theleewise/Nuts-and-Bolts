@@ -1,5 +1,5 @@
 @mixin media($horz: $gutter-sm, $vert: $vert-space) {
-	@include child-margin-clear;
+	@include clear-children;
 
 	align-items: flex-start;
 	display: flex;
@@ -10,7 +10,7 @@
 	}
 	&__body {
 		flex: 1;
-		@include child-margin-clear;
+		@include clear-children;
 	}
 }
 

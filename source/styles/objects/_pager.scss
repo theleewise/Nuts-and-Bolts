@@ -35,3 +35,9 @@
 //   &__item--last {}
   
 }
+
+
+.blah {
+  background-color: getColor(red);
+  color: getColorText(red);
+}

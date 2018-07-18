@@ -1,7 +1,7 @@
 .alert {
 	background-color: $info-color;
     line-height: 1em;
-margin-bottom: $vert-space;
+	margin-bottom: $vert-space;
     padding: ($vert-space / 2) $vert-space;
     
 	&--success { background-color: $success-color; }
