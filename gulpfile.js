@@ -1,23 +1,24 @@
 var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	beeper = require('beeper'),
-	gulpCopy = require('gulp-copy'),
-	sassGlob = require('gulp-sass-glob'),
-	imagemin = require('gulp-imagemin'),
-	sass = require('gulp-sass'),
-	sourcemaps = require('gulp-sourcemaps'),
-	uglify = require('gulp-uglify'),
-	svgSymbols = require('gulp-svg-symbols'),
+	browserSync = require('browser-sync').create(),
+	concat = require('gulp-concat'),
 	cssImport = require('css-import'),
 	cssmqpacker = require('css-mqpacker'),
 	csswring = require('csswring'),
-	pngquant = require('imagemin-pngquant'),
-	notify = require('gulp-notify'),
 	del = require('del'),
-	runSequence = require('run-sequence'),
-	browserSync = require('browser-sync').create(),
+	gulpCopy = require('gulp-copy'),
+	imagemin = require('gulp-imagemin'),
+	notify = require('gulp-notify'),
+	pngquant = require('imagemin-pngquant'),
 	reload = browserSync.reload,
-	rename = require("gulp-rename");
+	rename = require("gulp-rename"),
+	runSequence = require('run-sequence'),
+	sass = require('gulp-sass'),
+	sassGlob = require('gulp-sass-glob'),
+	sourcemaps = require('gulp-sourcemaps'),
+	svgSymbols = require('gulp-svg-symbols'),
+	uglify = require('gulp-uglify');
 
 
 
@@ -27,24 +28,30 @@ var gulp = require('gulp'),
 	#OPTIONS
 \*------------------------------------*/
 
-var paths = {
-	source: {
-		styles: './source/styles/**/*.scss',
-		images: './source/images/*',
-		icons: './source/svg-icons/*.svg',
-		scripts: './source/scripts/*.js'
+var config = {
+	"sourceNodeLib": "./node_modules",
+	paths: {
+		source: {
+			styles: './source/styles/**/*.scss',
+			images: './source/images/*',
+			icons: './source/svg-icons/*.svg',
+			scripts: './source/scripts/*.js'
+		},
+		dist: {
+			styles: './public/styles',
+			images: './public/images',
+			icons: './public/images',
+			scripts: './public/scripts'
+		},
+		patternLibrary: {
+			patterns: ['pattern-library/**/*.html', 'pattern-library/**/*.md', 'pattern-library/data.json'],
+			styles: './pattern-library/assets/css',
+			images: './pattern-library/assets/images',
+			scripts: './pattern-library/assets/js'
+		}
 	},
-	dist: {
-		styles: './public/styles',
-		images: './public/images',
-		icons: './public/images',
-		scripts: './public/scripts'
-	},
-	patternLibrary: {
-		patterns: ['pattern-library/**/*.html', 'pattern-library/**/*.md', 'pattern-library/data.json'],
-		styles: './pattern-library/assets/css',
-		images: './pattern-library/assets/images',
-		scripts: './pattern-library/assets/js'
+	plugins: {
+		"flexboxgrid": ["${sourceNodeLib}/flexboxgrid/src/css/flexboxgrid.css"]
 	}
 };
 
@@ -84,19 +91,19 @@ gulp.task('images', function(callback) {
 
 // Remove old images
 gulp.task('clean-images', function() {
-	return del([ paths.dist.images ]);
+	return del([ config.paths.dist.images ]);
 });
 
 // Minify
 gulp.task('imagemin', function () {
-	return gulp.src(paths.source.images)
+	return gulp.src(config.paths.source.images)
 	.pipe(imagemin({
 		progressive: true,
 		svgoPlugins: [{removeViewBox: false}],
 		use: [pngquant()]
 	}))
-	.pipe(gulp.dest(paths.patternLibrary.images))
-	.pipe(gulp.dest(paths.dist.images));
+	.pipe(gulp.dest(config.paths.patternLibrary.images))
+	.pipe(gulp.dest(config.paths.dist.images));
 });
 
 
@@ -109,7 +116,7 @@ gulp.task('imagemin', function () {
 
 // build svg shapes
 gulp.task('shapes', function () {
-	return gulp.src(paths.source.icons)
+	return gulp.src(config.paths.source.icons)
 	.pipe(svgSymbols({
 		id: 'icon-%f', // Prepend icon ID with 'icon-'. This is to avoid conflicts with generic IDs like `id="home"`
 		templates: ['default-svg'],
@@ -118,8 +125,8 @@ gulp.task('shapes', function () {
 			return name.toLowerCase().trim().replace(/\s/g, '-');
 		}
 	}))
-	.pipe(gulp.dest(paths.patternLibrary.images)) // Add copy to the pattern library
-	.pipe(gulp.dest(paths.dist.images)); // Add copy to public directory
+	.pipe(gulp.dest(config.paths.patternLibrary.images)) // Add copy to the pattern library
+	.pipe(gulp.dest(config.paths.dist.images)); // Add copy to public directory
 });
 
 
@@ -131,13 +138,13 @@ gulp.task('shapes', function () {
 \*------------------------------------*/
 
 gulp.task('scripts', function() {
-	return gulp.src(paths.source.scripts)
+	return gulp.src(config.paths.source.scripts)
 	.pipe(sourcemaps.init()) // Start source maps
 	.pipe(uglify().on('error', onError)) // Minify
     .pipe(rename({ suffix: ".min" })) // Rename with '.min'
 	.pipe(sourcemaps.write('/')) // Finish source maps
-	.pipe(gulp.dest(paths.dist.scripts)) // Add copy to public directory
-	.pipe(gulp.dest(paths.patternLibrary.scripts)) // Add copy to the pattern library
+	.pipe(gulp.dest(config.paths.dist.scripts)) // Add copy to public directory
+	.pipe(gulp.dest(config.paths.patternLibrary.scripts)) // Add copy to the pattern library
 	.pipe(reload({ stream: true }));
 });
 
@@ -154,8 +161,8 @@ gulp.task('serve', ['styles'], function() {
 		server: './pattern-library'
 	});
 
-	gulp.watch(paths.source.styles, ['styles']).on('change', reload);
-	gulp.watch(paths.source.patterns).on('change', reload);
+	gulp.watch(config.paths.source.styles, ['styles']).on('change', reload);
+	gulp.watch(config.paths.source.patterns).on('change', reload);
 });
 
 
@@ -167,7 +174,8 @@ gulp.task('serve', ['styles'], function() {
 \*------------------------------------*/
 
 gulp.task('styles', function () {
-	return gulp.src(paths.source.styles)
+	return gulp
+		.src(config.paths.source.styles)
 		.pipe(sourcemaps.init()) // Start source maps
 		.pipe(sassGlob())
 		.pipe(sass({outputStyle: 'compressed'}).on('error', onError))
@@ -178,10 +186,11 @@ gulp.task('styles', function () {
 			}))
 		.pipe(rename({ suffix: ".min" })) // Rename with '.min'
 		.pipe(sourcemaps.write('/')) // Finish source maps
-		.pipe(gulp.dest(paths.dist.styles)) // Add copy to public directory
-		.pipe(gulp.dest(paths.patternLibrary.styles)) // Add copy to the pattern library
-		.pipe(reload({ stream: true }));
-	});
+		.pipe(gulp.dest(config.paths.dist.styles)) // Add copy to public directory
+		.pipe(gulp.dest(config.paths.patternLibrary.styles)) // Add copy to the pattern library
+		.pipe(reload({ stream: true }))
+	;
+});
 
 
 
@@ -193,10 +202,10 @@ gulp.task('styles', function () {
 
 gulp.task('watch', function() {
 	watching = true;
-	gulp.watch(paths.source.styles, ['styles']);
-	gulp.watch(paths.source.scripts, ['scripts']);
-	gulp.watch(paths.source.icons, ['shapes']);
-	gulp.watch(paths.source.images, ['images']);
+	gulp.watch(config.paths.source.styles, ['styles']);
+	gulp.watch(config.paths.source.scripts, ['scripts']);
+	gulp.watch(config.paths.source.icons, ['shapes']);
+	gulp.watch(config.paths.source.images, ['images']);
 });
 
 
