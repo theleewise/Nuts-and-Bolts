@@ -5,7 +5,7 @@
  * Any script file in a Drupal theme, like Basic, should have the functions you need
  */
 (function($) {
-  $(document).ready(function(){
+	$(document).ready(function(){
 
 
 
@@ -43,4 +43,18 @@
 		});
 
 	});
+
+	$(window).load(function(){
+
+		// Defer loading images assigned to a specific class.
+		// https://varvy.com/pagespeed/defer-images.html
+		// Use the line below as an example
+		// <img class="js-deferred" data-src="your-image-here" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+		var deferredImages = $('img.js-deferred');
+		deferredImages.each(function(){
+			var imgSrc = $(this).data('src');
+			if ( imgSrc ) { $(this).attr('src', imgSrc); }
+		});
+	});
+
 })(jQuery);
