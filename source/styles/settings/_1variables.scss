@@ -1,10 +1,13 @@
 /* #COLORS
 ------------------------------------*/
 $text-color:		#000;
+$primary-color:		#00f;
+$link-color:		$primary-color;
 $info-color:		#000;
 $success-color:		#000;
 $warning-color:		#000;
 $error-color:		#000;
+$body-color:		#fff;
 $brand-colors: (
 	red: (
 		color:		#f00,
@@ -13,29 +16,28 @@ $brand-colors: (
 );
 
 
-
 /* #TEXT
 ------------------------------------*/
-$font-primary:		'Open Sans', sans-serif;
-$font-secondary:	'Open Sans', sans-serif;
 
-$ts-body:			1.6rem;
-$text-lh:			1.6em;
-$text-lh-sm:		1.4em;
+// Body
+$text-body: 				'Open Sans', sans-serif;
+$text-size-body:			1.6rem;
+$text-body-line-height:		1.6em;
 
-$ts-h1:				3.1rem;
-$ts-h2:				2.5rem;
-$ts-h3:				2.3rem;
-$ts-h4:				2.1rem;
-$ts-h5:				1.9rem;
-$ts-h6:				1.7rem;
+// Headings
+$text-headings:				$text-body;
+$text-size-1:				3.1rem;
+$text-size-2:				2.5rem;
+$text-size-3:				2.3rem;
+$text-size-4:				2.1rem;
+$text-size-5:				1.9rem;
+$text-size-6:				1.7rem;
 
 
 /* #SPACING
 ------------------------------------*/
 $gutter:			3rem;
 $gutter-sm:			1.5rem;
-
 $vert-space:		3rem;
 $vert-space-sm:		2rem;
 

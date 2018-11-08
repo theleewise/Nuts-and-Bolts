@@ -1,0 +1,29 @@
+html {
+    background-color: $body-color;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*, *:after, *:before {
+    box-sizing: inherit;
+}
+body {
+    background-color: transparent;
+    font-size: $text-size-body;
+    font-family: $text-body;
+    font-weight: 300;
+    line-height: $text-body-line-height;
+}
+
+a {
+    color: $link-color;
+    text-decoration: underline;
+
+    &:visited {}
+    &:active {}
+}
+
+a, input, textarea, button {
+    &:focus {
+      outline-color: $link-color;
+    }
+ }

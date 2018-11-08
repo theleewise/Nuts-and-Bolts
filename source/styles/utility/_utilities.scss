@@ -1,0 +1,32 @@
+
+
+/* #SPACING
+------------------------------------*/
+
+.block-center { @include block-center; }
+.clear-children { @include clear-children; }
+.clear-children-t { @include clear-children($bottom: false); }
+.clear-children-b { @include clear-children($top: false); }
+.bffs {
+    margin-bottom: 0;
+    + * { margin-top: 0; }
+}
+
+
+/* #TEXT
+------------------------------------*/
+
+.text-center { text-align: center; }
+.text-uppercase, .text-upper { text-transform: uppercase; }
+.text-size-1 { font-size: $text-size-1; line-height: 1.5em; }
+.text-size-2 { font-size: $text-size-2; line-height: 1.8em; }
+.text-size-3 { font-size: $text-size-3; line-height: 1.8em; }
+.text-size-4 { font-size: $text-size-4; line-height: 2rem; }
+.text-size-5 { font-size: $text-size-5; line-height: 1.71em; }
+.text-size-6 { font-size: $text-size-6; line-height: 1.6rem; }
+
+
+/* #COLOR
+------------------------------------*/
+
+.text-color-primary { color: $primary_color; }

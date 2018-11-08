@@ -7,9 +7,8 @@
 	width: 100%;
 }
 
-.container {
-	@include container;
-}
+.container { @include container; }
+.container-sm { @include contianer($max-width * .75); }
 
 
 /* #GUTTERS
@@ -17,12 +16,78 @@
 .gutter {
 	padding-left: $gutter-sm;
 	padding-right: $gutter-sm;
+	
 	@include mq(sm) {
 		padding-left: $gutter;
 		padding-right: $gutter;
 	}
-	&-sm {
-		padding-left: $gutter-sm;
-		padding-right: $gutter-sm;
+}
+.gutter-sm {
+	padding-left: $gutter-sm;
+	padding-right: $gutter-sm;
+}
+
+
+
+
+
+/*------------------------------------*\
+	#GRID
+\*------------------------------------*/
+
+@mixin grid-even($sel: '> *') {
+	display: flex;
+
+	@if $sel {
+		#{$sel} { flex: 1; }
 	}
+}
+
+@mixin grid-equal-height {
+	display: flex;
+	align-items: stretch;
+}
+
+@mixin grid-fluid($cols: 1, $gutter: $gutter * 2, $bp: null, $sel: '> *') {
+	display: flex;
+	flex-wrap: wrap;
+
+	@if $gutter {
+		margin-left: -$gutter;
+		margin-top: -$gutter;
+	}
+	
+	@if $sel {
+		#{$sel} {
+			$width: 100% / $cols;
+		
+			@if $bp != null { 
+				@include mq($bp){
+					flex-basis: $width;
+					max-width: $width;
+					width: $width;
+					
+					@if $gutter {
+						padding-left: $gutter;
+						padding-top: $gutter;
+					}
+				}
+			} @else {
+				flex-basis: $width;
+				max-width: $width;
+				width: $width;
+				
+				@if $gutter {
+					padding-left: $gutter;
+					padding-top: $gutter;
+				}
+			}
+		}
+	}
+}
+
+@mixin grid-center-both {
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }

@@ -17,10 +17,15 @@
 }
 
 
-/* #ASPECTRATIO
+/* #ABSOLUTEFILL
 ------------------------------------*/
-@mixin aspect-ratio($w:1,$h:1){
-	padding-top: (($h / $w) * 100)+'%';
+@mixin absolute-fill {
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 
@@ -28,12 +33,22 @@
 ------------------------------------*/
 @mixin psuedo-absolute {
 	content: '';
-	display: block;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
+	@include absolute-fill;
+}
+
+
+/* #ASPECTRATIO
+------------------------------------*/
+@mixin aspect-ratio($w:1,$h:1){
+	position: relative;
+	&:before {
+		content: '';
+		display: block;
+		padding-top: ratioToPercent($w,$h);
+	}
+	> * {
+		@include absolute-fill;
+	}
 }
 
 
@@ -48,9 +63,9 @@
 
 /* #CLEARCHILDREN
 ------------------------------------*/
-@mixin clear-children($t:true, $b: true){
-	@if($t = true){ > *:first-child { margin-top: 0; } }
-	@if($b = true){ > *:last-child { margin-bottom: 0; } }
+@mixin clear-children($top:true, $bottom: true){
+	@if($top = true){ > *:first-child { margin-top: 0; } }
+	@if($bottom = true){ > *:last-child { margin-bottom: 0; } }
 }
 
 
@@ -96,12 +111,8 @@
 }
 
 
-
-
-
 /* #LISTS
 ------------------------------------*/
-
 @mixin plain-list {
 	margin: 0;
 	padding: 0;
@@ -109,4 +120,37 @@
 		margin: 0;
 		list-style: none;
 	}
+}
+
+
+/* #ANIMATIONS
+------------------------------------*/
+// This is to be used with Animate.css - https://daneden.github.io/animate.css/
+@mixin animate($name, $speed: 1s, $delay: 0s, $infinite: false) {
+	animation-name: $name;
+	animation-duration: $speed;
+	animation-delay: $delay;
+	animation-fill-mode: both;
+}
+
+
+/* #SPACING
+------------------------------------*/
+@mixin block-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* #SHOWHIDE
+------------------------------------*/
+@mixin hide($size, $dir: up, $force: false){
+	@if $force { $i: ' !important'; } @else { $i: '';}
+	@if $dir != up { $mq: $size + 'max' } @else { $mq: $size; }
+	@include mq($mq){ display: none + $i; }
+}
+@mixin show($size, $dir: up, $force: false, $type: 'block'){
+	@if $force { $i: ' !important'; } @else { $i: '';}
+	@if $dir != up { $mq: $size + 'max' } @else { $mq: $size; }
+	@include mq($mq){ display: $type + $i; }
 }

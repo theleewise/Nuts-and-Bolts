@@ -17,3 +17,8 @@
 		@return map-get($break-object, min-width);
 	}
 }
+
+
+@function ratioToPercent($w,$h){
+	@return (($h / $w) * 100)+'%';
+}
