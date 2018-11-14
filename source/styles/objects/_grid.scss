@@ -13,18 +13,19 @@
 
 /* #GUTTERS
 ------------------------------------*/
+@mixin gutter($size) {
+	padding-left: $size;
+	padding-right: $size;
+}
 .gutter {
-	padding-left: $gutter-sm;
-	padding-right: $gutter-sm;
+	@include gutter($gutter-sm);
 	
 	@include mq(sm) {
-		padding-left: $gutter;
-		padding-right: $gutter;
+		@include gutter;
 	}
 }
 .gutter-sm {
-	padding-left: $gutter-sm;
-	padding-right: $gutter-sm;
+	@include gutter($gutter-sm);
 }
 
 
