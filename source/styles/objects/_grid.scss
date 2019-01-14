@@ -8,12 +8,12 @@
 }
 
 .container { @include container; }
-.container-sm { @include contianer($max-width * .75); }
+.container-sm { @include container($max-width * .75); }
 
 
 /* #GUTTERS
 ------------------------------------*/
-@mixin gutter($size) {
+@mixin gutter($size: $gutter) {
 	padding-left: $size;
 	padding-right: $size;
 }

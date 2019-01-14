@@ -68,6 +68,17 @@
 	@if($bottom = true){ > *:last-child { margin-bottom: 0; } }
 }
 
+/* #CLEARFIX
+------------------------------------*/
+
+@mixin clearfix {
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+  }
+
 
 /* #TRIANGLE
 ------------------------------------*/
@@ -108,6 +119,25 @@
 	@include flex-center;
 	@include image-cover;
 	background-color:  #eee;
+}
+
+/* #GRADIANT
+------------------------------------*/
+/*
+	Examples:
+	@include linear-gradient(#31B7D7, #EDAC7D);
+	@include linear-gradient(to right, #E47D7D 0%, #C195D3 50%, #4FB4E8 100%);
+	@include linear-gradient(42deg, #B58234 0%, #D2B545 50%, #D7C04D 50.01%, #FFFFFF 100%);
+*/
+@mixin linear-gradient($direction, $color-stops...) {
+	@if is-direction($direction) == false {
+		$color-stops: ($direction, $color-stops);
+		$direction: 180deg;
+	}
+
+	background: nth(nth($color-stops, 1), 1);
+	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+	background: linear-gradient($direction, $color-stops);
 }
 
 
@@ -154,3 +184,8 @@
 	@if $dir != up { $mq: $size + 'max' } @else { $mq: $size; }
 	@include mq($mq){ display: $type + $i; }
 }
+
+
+/* #BROWSER HACKS
+------------------------------------*/
+@mixin ie-select-hide (){ &::-ms-expand { display: none; } } // Remove default arrow for IE
