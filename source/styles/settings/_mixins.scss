@@ -1,7 +1,6 @@
 /* #MEDIAQUERIES
 ------------------------------------*/
 @mixin mq($break, $type: min) {
-	content: '#{type-of($break)}';
 	@if (type-of($break) == 'string'){
 		@if $type == max {
 			$break: getBreak($break, max);
