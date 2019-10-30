@@ -43,7 +43,7 @@
 	&:before {
 		content: '';
 		display: block;
-		padding-top: ratioToPercent($w,$h);
+		padding-top: percentage($h / $w);
 	}
 	> * {
 		@include absolute-fill;
