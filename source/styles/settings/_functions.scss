@@ -18,10 +18,6 @@
 	}
 }
 
-@function ratioToPercent($w,$h){
-	@return (($h / $w) * 100)+'%';
-}
-
 @function half($num) {
 	@return $num / 2;
 }
